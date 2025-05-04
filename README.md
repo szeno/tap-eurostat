@@ -4,6 +4,21 @@
 
 Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
 
+This custom Singer tap allows users to extract curated datasets from the [Eurostat REST API](https://ec.europa.eu/eurostat/web/json-and-unicode-web-services) in JSON-stat format. It supports a predefined selection of Eurostat dataset codes relevant to key social, environmental, and economic indicators. The tap streamlines integration with Meltano for pipeline development and analytics workflows.
+
+## Supported Datasets
+
+- `gov_10dd_edpt1`: Government deficit and debt  
+- `demo_pjan`: Population on 1 January by age and sex  
+- `env_air_gge`: Greenhouse gas emissions  
+- `lfsa_urgan`: Unemployment by sex and age  
+- `ilc_mddd11`: Material deprivation rate  
+- `isoc_ci_ifp_iu`: Internet use by individuals  
+- `nrg_ind_ren`: Share of renewable energy in industry  
+- `migr_imm1ctz`: Immigration by citizenship  
+- `nama_10_gdp`: GDP and main aggregates  
+- `prc_hicp_aind`: Harmonised Index of Consumer Prices (HICP)
+
 ## Installation
 
 Install from GitHub:
