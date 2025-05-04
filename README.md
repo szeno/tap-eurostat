@@ -50,6 +50,18 @@ tap is available by running:
 tap-eurostat --about
 ```
 
+### **Important: If `tap-eurostat` is not found**
+
+If the `tap-eurostat` command is not found after installation, you may need to ensure that the directory containing the executable is in your `PATH`. This can happen if the binary is located in a non-standard directory.
+
+To resolve this, you can add the directory to your `PATH`. The location of the binary is typically in a directory like `~/.local/bin`, but it may vary depending on your installation method or environment.
+
+To temporarily add the directory to your `PATH`, run the following command:
+
+```bash
+export PATH="/path/to/directory:$PATH"
+```
+
 ### Configure using environment variables
 
 This Singer tap will automatically import any environment variables within the working directory's
