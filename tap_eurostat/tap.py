@@ -14,33 +14,12 @@ class TapEuroStat(Tap):
 
     name = "tap-eurostat"
 
-    # TODO: Update this section with the actual config values you expect:
     config_jsonschema = th.PropertiesList(
-        th.Property(
-            "auth_token",
-            th.StringType(nullable=False),
-            required=True,
-            secret=True,  # Flag config as protected.
-            title="Auth Token",
-            description="The token to authenticate against the API service",
-        ),
-        th.Property(
-            "project_ids",
-            th.ArrayType(th.StringType(nullable=False), nullable=False),
-            required=True,
-            title="Project IDs",
-            description="Project IDs to replicate",
-        ),
-        th.Property(
-            "start_date",
-            th.DateTimeType(nullable=True),
-            description="The earliest record date to sync",
-        ),
         th.Property(
             "api_url",
             th.StringType(nullable=False),
             title="API URL",
-            default="https://api.mysample.com",
+            default="https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data",
             description="The url for the API service",
         ),
         th.Property(
@@ -54,14 +33,17 @@ class TapEuroStat(Tap):
     ).to_dict()
 
     def discover_streams(self) -> list[streams.EuroStatStream]:
-        """Return a list of discovered streams.
-
-        Returns:
-            A list of discovered streams.
-        """
         return [
-            streams.GroupsStream(self),
-            streams.UsersStream(self),
+            streams.GDPStream(self),
+            streams.PopulationStream(self),
+            streams.EmploymentUnemploymentStream(self),
+            streams.InflationRateStream(self),
+            streams.GreenHauseGasEmissionsStream(self),
+            streams.MeterialDeprivationStream(self),
+            streams.RenewableEnergyStream(self),
+            streams.GovernmentDebtStream(self),
+            streams.InternetUsageStream(self),
+            streams.MigrationStream(self),
         ]
 
 
