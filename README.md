@@ -4,22 +4,12 @@
 
 Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
 
-<!--
-
-Developer TODO: Update the below as needed to correctly describe the install procedure. For instance, if you do not have a PyPI repo, or if you want users to directly install from your git repo, you can modify this step as appropriate.
-
 ## Installation
-
-Install from PyPI:
-
-```bash
-pipx install tap-eurostat
-```
 
 Install from GitHub:
 
 ```bash
-pipx install git+https://github.com/ORG_NAME/tap-eurostat.git@main
+pipx install git+https://github.com/szeno/tap-eurostat.git@main
 ```
 
 -->
@@ -51,11 +41,6 @@ This Singer tap will automatically import any environment variables within the w
 `.env` if the `--config=ENV` is provided, such that config values will be considered if a matching
 environment variable is set either in the terminal context or in the `.env` file.
 
-### Source Authentication and Authorization
-
-<!--
-Developer TODO: If your tap requires special access on the source system, or any special authentication requirements, provide those here.
--->
 
 ## Usage
 
@@ -103,12 +88,6 @@ uv run tap-eurostat --help
 
 _**Note:** This tap will work in any Singer environment and does not require Meltano.
 Examples here are for convenience and to streamline end-to-end orchestration scenarios._
-
-<!--
-Developer TODO:
-Your project comes with a custom `meltano.yml` project file already created. Open the `meltano.yml` and follow any "TODO" items listed in
-the file.
--->
 
 Next, install Meltano (if you haven't already) and any needed plugins:
 
