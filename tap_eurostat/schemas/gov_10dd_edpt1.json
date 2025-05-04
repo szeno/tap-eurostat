@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "gov_10dd_edpt1",
+    "type": "object",
+    "properties": {
+        "time_frequency": {
+            "type": ["string", "null"],
+            "description": "Frequency of the reported time"
+        },
+        "unit_of_measure": {
+            "type": ["string", "null"],
+            "description": "Unit of measurement"
+        },
+        "sector": {
+            "type": ["string", "null"],
+            "description": "Sector"
+        },
+        "national_accounts_indicator_esa_2010": {
+            "type": ["string", "null"],
+            "description": "Indicator based on national accounts (ESA 2010)"
+        },
+        "geopolitical_entity_reporting": {
+            "type": ["string", "null"],
+            "description": "Reporting geopolitical entity"
+        },
+        "time": {
+            "type": ["string", "null"],
+            "description": "Time period"
+        },
+        "value": {
+            "type": ["number", "null"],
+            "description": "The reported value"
+        }
+    }
+}

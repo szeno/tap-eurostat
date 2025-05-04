@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "env_air_gge",
+    "type": "object",
+    "properties": {
+        "time_frequency": {
+            "type": ["string", "null"],
+            "description": "Frequency of the time reported"
+        },
+        "unit_of_measure": {
+            "type": ["string", "null"],
+            "description": "Unit of measurement"
+        },
+        "air_pollutants_and_greenhouse_gases": {
+            "type": ["string", "null"],
+            "description": "Air pollutants and greenhouse gases"
+        },
+        "source_sectors_for_greenhouse_gas_emissions_common_reporting_format_unfccc": {
+            "type": ["string", "null"],
+            "description": "Source sectors for greenhouse gas emissions (common reporting format, UNFCCC)"
+        },
+        "geopolitical_entity_reporting": {
+            "type": ["string", "null"],
+            "description": "Reporting geopolitical entity"
+        },
+        "time": {
+            "type": ["string", "null"],
+            "description": "Time period"
+        },
+        "value": {
+            "type": ["number", "null"],
+            "description": "The reported value"
+        }
+    }
+}

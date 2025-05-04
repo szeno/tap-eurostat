@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "nrg_ind_ren",
+    "type": "object",
+    "properties": {
+        "time_frequency": {
+            "type": ["string", "null"],
+            "description": "Frequency of the reported time"
+        },
+        "energy_balance": {
+            "type": ["string", "null"],
+            "description": "Energy balance information"
+        },
+        "unit_of_measure": {
+            "type": ["string", "null"],
+            "description": "Unit of measurement"
+        },
+        "geopolitical_entity_reporting": {
+            "type": ["string", "null"],
+            "description": "Reporting geopolitical entity"
+        },
+        "time": {
+            "type": ["string", "null"],
+            "description": "Time period"
+        },
+        "value": {
+            "type": ["number", "null"],
+            "description": "The reported value"
+        }
+    }
+}

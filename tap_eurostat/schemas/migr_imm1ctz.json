@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "migr_imm1ctz",
+    "type": "object",
+    "properties": {
+        "time_frequency": {
+            "type": ["string", "null"],
+            "description": "Frequency of the reported time"
+        },
+        "country_of_citizenship": {
+            "type": ["string", "null"],
+            "description": "Country of citizenship"
+        },
+        "age_definition": {
+            "type": ["string", "null"],
+            "description": "Age definition"
+        },
+        "age_class": {
+            "type": ["string", "null"],
+            "description": "Age class"
+        },
+        "unit_of_measure": {
+            "type": ["string", "null"],
+            "description": "Unit of measurement"
+        },
+        "sex": {
+            "type": ["string", "null"],
+            "description": "Sex"
+        },
+        "geopolitical_entity_reporting": {
+            "type": ["string", "null"],
+            "description": "Reporting geopolitical entity"
+        },
+        "time": {
+            "type": ["string", "null"],
+            "description": "Time period"
+        },
+        "value": {
+            "type": ["number", "null"],
+            "description": "The reported value"
+        }
+    }
+}
