@@ -5,14 +5,13 @@ from __future__ import annotations
 import decimal
 import typing as t
 from importlib import resources
+from itertools import product
 
 from singer_sdk.streams import RESTStream
 
 if t.TYPE_CHECKING:
     import requests
     from singer_sdk.helpers.types import Context
-
-from pyjstat import pyjstat
 
 # TODO: Delete this is if not using json files for schema definition
 SCHEMAS_DIR = resources.files(__package__) / "schemas"
@@ -82,15 +81,43 @@ class EuroStatStream(RESTStream):
         """
         # TODO: Delete this method if no payload is required. (Most REST APIs.)
         return None
-
+        
     def parse_response(self, response: requests.Response) -> t.Iterable[dict]:
-        """Parse a JSON‑stat response and yield records using pyjstat."""
-        # Read the JSON‑stat response using pyjstat
-        dataset = pyjstat.Dataset.read(response.text)
-        # Convert the dataset to a DataFrame then to a list of dictionaries:
-        df = dataset.write('dataframe')
-        for record in df.iloc[:100].to_dict(orient='records'):
-            yield record
+
+        json_stat_data = response.json()
+        dimensions = json_stat_data["dimension"]
+        ids = json_stat_data["id"]
+        values = json_stat_data["value"]
+
+        # Map internal IDs (like 'freq') to their full labels (like 'Time frequency')
+        id_to_label = {dim: dimensions[dim].get("label", dim) for dim in ids}
+
+        categories = {}
+
+        for dim in ids:
+            cat = dimensions[dim]["category"]
+            labels = cat.get("label", {})
+
+            if "index" in cat:
+                keys = cat["index"]
+            elif isinstance(labels, dict):
+                keys = list(labels.keys())
+            else:
+                raise ValueError(f"Cannot determine order for dimension: {dim}")
+
+            label_values = [labels.get(k, k) for k in keys]
+            categories[dim] = label_values
+
+        # Create readable column names and prepare row generation
+        readable_dim_names = [id_to_label[dim] for dim in ids]
+        dimension_combinations = product(*[categories[dim] for dim in ids])
+        is_values_dict = isinstance(values, dict)
+
+        for i, combination in enumerate(dimension_combinations):
+            val = values.get(str(i)) if is_values_dict else (
+                values[i] if i < len(values) else None
+            )
+            yield {dim_name: label for dim_name, label in zip(readable_dim_names, combination)} | {"value": val}
 
     def post_process(
         self,
