@@ -138,6 +138,6 @@ class EuroStatStream(RESTStream):
         new_row = {}
         for key, value in row.items():
             # Lowercase keys, remove spaces, and remove parentheses
-            new_key = key.lower().replace(" ", "_").replace("(", "").replace(")", "")
+            new_key = key.lower().replace(" ", "_").replace("(", "").replace(")", "")[:63] # Postgres not allowed longer string as column name
             new_row[new_key] = value
         return new_row
