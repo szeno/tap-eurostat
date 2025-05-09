@@ -15,7 +15,7 @@
             "type": ["string", "null"],
             "description": "Air pollutants and greenhouse gases"
         },
-        "source_sectors_for_greenhouse_gas_emissions_common_reporting_format_unfccc": {
+        "source_sectors_for_greenhouse_gas_emissions_common_reporting_fo": {
             "type": ["string", "null"],
             "description": "Source sectors for greenhouse gas emissions (common reporting format, UNFCCC)"
         },
