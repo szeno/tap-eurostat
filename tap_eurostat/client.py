@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import decimal
 import typing as t
+import os
 from importlib import resources
 from itertools import product
 
@@ -113,7 +114,16 @@ class EuroStatStream(RESTStream):
         dimension_combinations = product(*[categories[dim] for dim in ids])
         is_values_dict = isinstance(values, dict)
 
+        # Read limit from environment variable for testing
+        # This is a workaround for the test suite to limit the number of records
+        # returned by the API. In production, this should be set to None or a
+        # reasonable number
+        limit_str = os.environ.get("EUROSTAT_YIELD_LIMIT")
+        limit = int(limit_str) if limit_str and limit_str.isdigit() else None
+
         for i, combination in enumerate(dimension_combinations):
+            if limit is not None and i >= limit:
+                break
             val = values.get(str(i)) if is_values_dict else (
                 values[i] if i < len(values) else None
             )
